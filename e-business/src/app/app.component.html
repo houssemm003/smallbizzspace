@@ -1,0 +1,121 @@
+<div class="page">
+  <header class="navbar">
+    <div class="container navbar-content">
+      <a class="logo" href="#">
+        
+        <span class="logo-text">SmallBiz</span>
+      </a>
+
+      <nav class="menu">
+        <a href="#">🔍 Rechercher un espace</a>
+        <a href="#">Proposer un espace</a>
+        <a href="#">Comment ça marche</a>
+      </nav>
+
+      <div class="auth">
+        <button class="btn-link">Connexion</button>
+        <button class="btn-inscription">Inscription</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="welcome">✨ Bienvenue sur SmallBizSpaces ✨</p>
+        <h1>Trouvez l'espace parfait pour votre business</h1>
+        <p class="subtitle">
+          Connectez-vous avec des propriétaires d'espaces commerciaux pour lancer votre activité éphémère
+        </p>
+
+        <form class="search-box">
+          <div class="field">
+            <label>Localisation</label>
+            <div class="input-wrapper">
+              <span class="icon">📍</span>
+              <input type="text" placeholder="Ville, quartier..." />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Type d'espace</label>
+            <select>
+              <option>Boutique</option>
+              @for (type of spaceTypes; track type) {
+                <option>{{ type }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Dates</label>
+            <input type="date" placeholder="jj/mm/aaaa" />
+          </div>
+
+          <button type="button" class="search-btn">
+            🔍 Rechercher
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section class="popular">
+      <div class="container">
+        <h2 class="section-title">Espaces populaires</h2>
+
+        <div class="cards-grid">
+          @for (space of popularSpaces; track space.name) {
+            <article class="space-card">
+              <div class="card-image">
+                <img [src]="space.image" [alt]="space.name" />
+                <span class="tag">{{ space.tag }}</span>
+              </div>
+              <div class="card-content">
+                <h3>{{ space.name }}</h3>
+                <p class="location">📍 {{ space.location }}</p>
+                <div class="card-footer">
+                  <div class="size">{{ space.size }}</div>
+                  <div class="price">{{ space.price }}</div>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <div class="container">
+        <div class="how-intro">
+          <p class="eyebrow">Comment ça marche</p>
+          <h2>Un parcours simple et accompagné</h2>
+          <p>Du brief initial à l'ouverture, notre équipe vous guide et sécurise chaque étape.</p>
+        </div>
+
+        <div class="steps">
+          @for (step of howItWorks; track step.title; let idx = $index) {
+            <article class="step-card">
+              <span class="step-index">{{ idx + 1 }}</span>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-content">
+        <div>
+          <p class="eyebrow">Lancez votre concept</p>
+          <h2>Proposez ou trouvez un espace en quelques minutes</h2>
+          <p>Nos conseillers répondent en moins de 24h pour vous aider à concrétiser votre projet.</p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn primary large">Trouver un espace</button>
+          <button class="btn ghost large">Proposer mon lieu</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
